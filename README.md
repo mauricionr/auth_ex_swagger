@@ -1,4 +1,4 @@
-# Erp
+# AuthEx
 
 To start your Phoenix server:
 
