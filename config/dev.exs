@@ -7,7 +7,7 @@ use Mix.Config
 # watchers to your application. For example, we use it
 # with brunch.io to recompile .js and .css sources.
 config :auth_ex, AuthExWeb.Endpoint,
-  http: [port: 4000],
+  http: [port: 4001],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
@@ -34,12 +34,14 @@ config :auth_ex, AuthExWeb.Endpoint,
 config :auth_ex, AuthExWeb.Endpoint,
   live_reload: [
     patterns: [
-      ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
+      ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg|json)$},
       ~r{priv/gettext/.*(po)$},
-      ~r{lib/auth_ex_web/views/.*(ex)$},
-      ~r{lib/auth_ex_web/templates/.*(eex)$}
+      ~r{lib/shark_web/views/.*(ex)$},
+      ~r{lib/your_app_web/controllers/.*(ex)$},
+      ~r{lib/shark_web/templates/.*(eex)$}
     ]
-  ]
+  ],
+  reloadable_compilers: [:gettext, :phoenix, :elixir, :phoenix_swagger]
 
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"

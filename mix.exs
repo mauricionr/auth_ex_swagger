@@ -20,7 +20,7 @@ defmodule AuthEx.Mixfile do
   def application do
     [
       mod: {AuthEx.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      compilers: [:phoenix, :gettext, :phoenix_swagger] ++ Mix.compilers
     ]
   end
 
@@ -43,7 +43,9 @@ defmodule AuthEx.Mixfile do
       {:cowboy, "~> 1.0"},
       {:guardian, "~> 1.0-beta"},
       {:comeonin, "~> 4.0"},
-      {:bcrypt_elixir, "~> 0.12"}
+      {:bcrypt_elixir, "~> 0.12"},
+      {:phoenix_swagger, "~> 0.8"},
+      {:ex_json_schema, "~> 0.5"} # optional
     ]
   end
 

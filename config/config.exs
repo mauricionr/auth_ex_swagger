@@ -11,7 +11,7 @@ config :auth_ex,
 
 # Configures the endpoint
 config :auth_ex, AuthExWeb.Endpoint,
-  url: [host: "localhost"],
+  url: [host: "localhost", port: 4001],
   secret_key_base: "+98SbYAQ5u/E2crhFwiBoPF/mrulgnTOvc68XsjjsHvctSbmyDIIwGU7rmiPrVgn",
   render_errors: [view: AuthExWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: AuthEx.PubSub,
@@ -25,6 +25,14 @@ config :logger, :console,
 config :auth_ex, AuthEx.Auth.Guardian,
   issuer: "auth_ex", # Name of your app/company/product
   secret_key: "foobar" # Don't check-in real keys!
+
+config :auth_ex, :phoenix_swagger,
+  swagger_files: %{
+    "priv/static/swagger.json" => [
+      router: AuthExWeb.Router,     # phoenix routes will be converted to swagger paths
+      endpoint: AuthExWeb.Endpoint  # (optional) endpoint config used to set host, port and https schemes.
+    ]
+  }
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
